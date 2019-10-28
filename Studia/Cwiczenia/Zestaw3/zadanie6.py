@@ -14,8 +14,7 @@ kolumny = pobierz_liczbe("Podaj ile kolumn: ")
 string = ''
 
 for x in range(wiersz):
-	string += '+' + '----+' * (kolumny) + '\n'
-	string += '|' + '    |' * (kolumny) + '\n'
+	string += '+' + '----+' * (kolumny) + '\n' + '|' + '    |' * (kolumny) + '\n'
 
 string += '+' + '----+' * (kolumny) + '\n'
 

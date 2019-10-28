@@ -1,5 +1,4 @@
-name = ""
-while name != 'stop':
+while True:
 	name = input('Podaj liczbe lub napisz stop: ')
 	if name == 'stop':
 		break
