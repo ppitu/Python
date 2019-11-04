@@ -42,6 +42,3 @@ if __name__ == '__main__':
 	import doctest
 	doctest.testmod()
 
-L = [1, 2, 3, 4, 5, 6, 7, 8]
-
-print(odwracanie(L, 1, 4))
