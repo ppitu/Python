@@ -1,3 +1,4 @@
-Aby otworzyc testy programow nalezy za nazwa pliku napisa -v
+Aby otworzyc testy programu z zadania 2 nalezy napisac: python3.X nazwa-programu -v
+Gdzie X jest wersja pythona 3
 
-Zad2 testy funckji z pliku francs.py umiescilem w pliku test.py
+Testy funckji z pliku fracs.py umiescilem w pliku test.py, w ktorym importuje funckje z pliku fracs.py
