@@ -1,11 +1,18 @@
+import math
+
+def nwd(lista):
+	zmienna = math.gcd(lista[0], lista[1])
+
+	return [lista[0]/zmienna, lista[1]/zmienna]
+
 
 def add_frac(frac1, frac2):
 	lista = []
 	if frac1[0] == 0:
-		return frac2
+		return nwd(frac2)
 	
 	if frac2[0] == 0:
-		return frac1
+		return nwd(frac1)
 
 	if frac1[1] == frac2[1]:
 		lista += [frac1[0] + frac2[0], frac1[1]]
@@ -14,15 +21,15 @@ def add_frac(frac1, frac2):
 		frac1[1], frac2[1] = frac1[1]*frac2[1], frac2[1]*frac1[1]
 		lista += [frac1[0] + frac2[0], frac1[1]]
 
-	return lista
+	return nwd(lista)
 
 def sub_frac(frac1, frac2):
 	lista = []
 	if frac1[0] == 0:
-		return frac2
+		return nwd(frac2)
 	
 	if frac2[0] == 0:
-		return frac1
+		return nwd(frac1)
 
 	if frac1[1] == frac2[1]:
 		lista += [frac1[0] - frac2[0], frac1[1]]
@@ -31,23 +38,23 @@ def sub_frac(frac1, frac2):
 		frac1[1], frac2[1] = frac1[1]*frac2[1], frac2[1]*frac1[1]
 		lista += [frac1[0] - frac2[0], frac1[1]]
 
-	return lista
+	return nwd(lista)
 
 def mul_frac(frac1, frac2):
 	
 	if frac1[0] == 0:
-		return [0, frac2[1]]
+		return nwd([0, frac2[1]])
 	
 	if frac2[0] == 0:
-		return [0, frac1[1]]
+		return nwd([0, frac1[1]])
 
-	return [frac1[0]*frac2[0], frac1[1]*frac2[1]]
+	return nwd([frac1[0]*frac2[0], frac1[1]*frac2[1]])
 
 def div_frac(frac1, frac2):
 	if frac1[0] == 0:
-		return [0, frac2[1]]
+		return nwd([0, frac2[1]])
 
-	return [frac1[0]*frac2[1], frac1[1]*frac2[0]]
+	return nwd([frac1[0]*frac2[1], frac1[1]*frac2[0]])
 
 def is_positive(frac):
 	if frac[0] >= 0:
