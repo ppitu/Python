@@ -1,87 +1,41 @@
-import fracs
+from fracs import *
 
+import unittest
 
-def test(frac1, frac2):
-	"""Funkcja testuje dodwanie ulamkow
-	>>> test([1, 2], [2, 3])
-	[7.0, 6.0]
-	>>> test([0, 2], [2, 3])
-	[2.0, 3.0]
-	>>> test([1, 2], [1, 2])
-	[1.0, 1.0]
-	"""
+class TestFractions(unittest.TestCase):
+	def setUp(self):
+		self.zero = [0, 1]
 
-	print(fracs.add_frac(frac1, frac2))
+	def test_add_frac(self):
+		self.assertEqual(add_frac([1, 2], [1, 3]), [5, 6])
+		self.assertEqual(add_frac([1, 2], [2, 3]), [7, 6])
+		self.assertEqual(add_frac([0, 2], [2, 3]), [2, 3])
 
-def test1(frac1, frac2):
-	"""Funckja testuje odejmowanie ulamkow
-	>>> test1([1, 2], [2, 3])
-	[-1.0, 6.0]
-	>>> test1([1, 2], [-1, 2])
-	[1.0, 1.0]
-	>>> test1([-1, 2], [2, 3])
-	[-7.0, 6.0]
-	"""
+	def test_sub_frac(self):
+		self.assertEqual(sub_frac([1, 2], [2, 3]), [-1, 6])
+		self.assertEqual(sub_frac([1, 2], [-1, 2]), [1, 1])
+		self.assertEqual(sub_frac([-1, 2], [2, 3]), [-7, 6])		
 
-	print(fracs.sub_frac(frac1, frac2))
+	def test_mul_frac(self):
+		self.assertEqual(mul_frac([1, 2], [-1, 3]), [-1, 6])
+		self.assertEqual(mul_frac([0, 2], [-1, 2]), [0, 1])
 
-def test2(frac1, frac2):
-	"""Funckja testuje mnozenie ulamkow
-	>>> test2([1, 2], [-2, 3])
-	[-1.0, 3.0]
-	>>> test2([0, 2], [-1, 2])
-	[0.0, 1.0]
-	>>> test2([-1, 2], [2, 3])
-	[-1.0, 3.0]
-	"""
+	def test_div_frac(self):
+		self.assertEqual(div_frac([1, 2], [2, 3]), [3, 4])
+		self.assertEqual(div_frac([0, 2], [-1, 2]), [0, 1])
 
-	print(fracs.mul_frac(frac1, frac2))
+	def test_is_positive(self):
+		self.assertEqual(is_positive([1, 2]), True)
+		self.assertEqual(is_positive([-1, 2]), False)
 
-def test3(frac1, frac2):
-	"""Funckja testuje dzielenie ulamkow
-	>>> test3([1, 2], [2, 3])
-	[3.0, 4.0]
-	>>> test3([0, 2], [-1, 2])
-	[0.0, 1.0]
-	>>> test3([1, 2], [1, 2])
-	[1.0, 1.0]
-	"""
+	def test_cmp_frac(self):
+		self.assertEqual(cmp_frac([1, 4], [2, 4]), -1)
+		self.assertEqual(cmp_frac([1, 2], [1, 2]), 0)
+		self.assertEqual(cmp_frac([2, 4], [1, 4]), 1)
 
-	print(fracs.div_frac(frac1, frac2))
-
-def test4(frac):
-	"""Funckja testuje czy ulamek jest dodatni
-	>>> test4([1, 2])
-	True
-	>>> test4([-1, 2])
-	False
-	"""
-
-	print(fracs.is_positive(frac))
-
-
-def test5(frac1, frac2):
-	"""Funkcja porownuje ulamki
-	>>> test5([1, 4], [2, 4])
-	-1
-	>>> test5([1, 2], [1, 2])
-	0
-	>>> test5([2, 4], [1, 4])
-	1
-	"""
-
-	print(fracs.cmp_frac(frac1, frac2))
-
-def test6(frac):
-	"""Funkcja zmienia ulamki z liczby dziesietne
-	>>> test6([1, 2])
-	0.5
-	>>> test6([2, 2])
-	1.0
-	"""
-	
-	print(fracs.frac2float(frac))
+	def test_frac2float(self):
+		self.assertEqual(frac2float([1, 2]), 0.5)
+		self.assertEqual(frac2float([2, 2]), 1)
 
 if __name__ == '__main__':
-	import doctest
-	doctest.testmod()
+	unittest.main()
