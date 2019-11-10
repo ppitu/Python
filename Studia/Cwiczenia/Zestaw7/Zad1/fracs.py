@@ -1,3 +1,9 @@
+from math import gcd
+
+def nwd(x, y):
+	zmienna = gcd(x, y)
+	return Frac(x/zmienna, y/zmienna)
+
 
 class Frac:
 	"""Klasa reprezentujaca ulamki"""
@@ -9,8 +15,7 @@ class Frac:
 			self.x = x
 			self.y = y
 		except	ZeroDivisionError:
-			print("Nie mozna przypisac zera do mianownika")
-			print("Ulamek zostaje ustawiony na 1")
+			print("Error Dzielenie Przez Zero")
 			self.x = 1
 			self.y = 1
 
@@ -43,13 +48,105 @@ class Frac:
 		return self.x/self.y >= other.x/other.y
 
 	def __add__(self, other):
-		if isinstance(other, int) or isinstance(other, float) or isinstance(other, long):
-			return Frac(self.x + other*self.y, self.y)
+		if isinstance(other, int):
+			return nwd(self.x + other*self.y, self.y)
+		if isinstance(other, float):
+			return self.x/self.y + other
 		if self.x == 0:
-			return other
+			return nwd(other.x, other.y)
 		if other.x == 0:
-			return self
+			return nwd(self.x, self.y)
 		if self.y == other.y:
-			return Frac(self.x + other.x, self.y)
+			return nwd(self.x + other.x, self.y)
 		
-		return Frac(self.x*other.y + other.x*self.y, self.y*other.y)
+		return nwd(self.x*other.y + other.x*self.y, self.y*other.y)
+
+	__radd__ = __add__
+
+	def __sub__(self, other):
+		if isinstance(other, int):
+			return nwd(self.x - other*self.y, self.y)
+		if isinstance(other, float):
+			return self.x/self.y - other
+		if self.x == 0:
+			return nwd(-other.x, other.y)
+		if other.x == 0:
+			return nwd(self.x, self.y)
+		if self.y == other.y:
+			return nwd(self.x - other.x, self.y)
+
+		return nwd(self.x*other.y - other.x*self.y, self.y*other.y)		
+	
+	def __rsub__(self, other):
+		
+		return nwd(self.y*other - self.x, self.y)
+
+	def __mul__(self, other):
+		if isinstance(other, int):
+			return nwd(self.x*other, self.y)
+		if isinstance(other, float):
+			return self.x/self.y * other
+		if self.x == 0 or other.x == 0:
+			return nwd(0, self.y)
+		return nwd(self.x*other.x, self.y*other.y)
+
+	__rmul__ = __mul__
+
+	def __truediv__(self, other):
+		if isinstance(other, int):
+			try:
+				if other == 0:
+					raise ZeroDivisionError
+				return nwd(self.x, self.y*other)
+			except ZeroDivisionError:
+				print("Dzielenie przez zero")
+				return nwd(1, 1)
+		if isinstance(other, float):
+			try:
+				if other == 0.0:
+					raise ZeroDivisionError
+				return (self.x/self.y)/other
+			except ZeroDivisionError:
+				print("Dzielenie przez zero")
+				return nwd(1, 1)
+		if self.x == 0:
+			return nwd(0, 1)
+
+		return nwd(self.x*other.y, self.y*other.x)
+
+	def __rtruediv__(self, other):
+		if isinstance(other, int):
+			try:
+				if other == 0:
+					raise ZeroDivisionError
+				return nwd(self.x, self.y*other)
+			except ZeroDivisionError:
+				print("Dzielenie przez zero")
+				return nwd(1, 1)
+		if isinstance(other, float):
+			try:
+				if other == 0.0:
+					raise ZeroDivisionError
+				return (self.x/self.y)/other
+			except ZeroDivisionError:
+				print("Dzielenie przez zero")
+				return nwd(1, 1)
+	
+		if self.x == 0:
+			return nwd(0, 1)
+		
+		return nwd(self.x*other.y, self.y*other.x)
+	
+	#operatory jednoargumentowe
+	
+	def __pos__(self):
+		return self
+
+	def __neg__(self):
+		return nwd(-self.x, self.y)
+
+	def __invert__(self):
+		return nwd(self.y, self.x)
+
+	def __float__(self):
+		return self.x/self.y
