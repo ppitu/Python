@@ -1,3 +1,7 @@
+def swap(L, i, j):
+	temp = L[i]
+	L[i] = L[j]
+	L[j] = temp
 
 def selectsort(L, left, right):
 	for i in range(left, right):
