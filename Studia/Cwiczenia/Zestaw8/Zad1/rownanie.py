@@ -3,6 +3,12 @@
 def solve1(a, b, c):
 	"""Rozwiazywanie rownania liniowego a x + b y + c = 0"""
 
+	if a == 0 and b == 0 and c == 0:
+		return "Nieskonczenie wiele rozwiazan"
+
+	if a == 0 and b == 0:
+		return "Brak rozwiazan"
+
 	if a == 0:
 		return [0, -c/b]
 
@@ -18,5 +24,9 @@ print('Test funckji solve dla a = 63, b = -7 c = 14')
 print(solve1(63, -7, 14))
 print('Test funkcji solve dla a = 0, b = 0.5, c = 11')
 print(solve1(0, 0.5, -11))
-print('Test funckji solbe dla a = 0.5, b = 0, c = 11')
+print('Test funckji solve dla a = 0.5, b = 0, c = 11')
 print(solve1(0.5, 0, -11))
+print('Test funckji sovle dla a = 0, b = 0, c = 1')
+print(solve1(0, 0, 1))
+print('Test funckji solve dla a = 0, b = 0, c = 0')
+print(solve1(0, 0, 0))
