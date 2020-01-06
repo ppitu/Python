@@ -11,7 +11,7 @@ class RandomQueue:
 	
 	def remove(self):
 		if self.is_empty():
-			raise IndexError
+			raise ValueError
 		zmienna = random.randrange(len(self.items))
 		temp = self.items[len(self.items) - 1]
 		self.items[len(self.items) - 1] = self.items[zmienna]
@@ -26,7 +26,8 @@ class RandomQueue:
 		
 		return False
 
-	def is_full(self): pass
+	def is_full(self):
+		return True
 
 	def clear(self):
 		for x in range(len(self.items)):

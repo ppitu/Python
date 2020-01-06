@@ -2,50 +2,25 @@ from randomqueue import *
 from random import *
 import os
 
-def number(string):
-	while True:
-		var = input(string)
-		
-		try: 
-			liczba = int(var)
-		except ValueError:
-			print('Nie podano liczby, sprobuj jeszcze raz')
-		else:
-			return liczba
+import unittest
 
-queue = RandomQueue()
+class Test(unittest.TestCase):
+	queue = RandomQueue()
 
-print('Test kolejki randomowej')
+	def test_wypelnienie_kolejki(self):
+		for x in range(10):
+			self.queue.insert(x)
 
-x = number('Podaj ile razy chcesz wywolac program: ')
+	def test_sprawdzenie_czy_pelna(self):
+		self.assertTrue(self.queue.is_full())
 
-for var in range(x):
-	os.system("clear")
-	z = number('Ile elementow dodac do kolejki: ')
+	def test_usuwanie_elementow(self):
+		while not self.queue.is_empty():
+			self.queue.remove()
 
-	print('Dodawanie elementow')
+	def test_sprawdzenie_czy_mozna_usunac_z_pustej(self):
+		with self.assertRaises(ValueError):
+			self.queue.remove()
 
-	for i in range(z):
-		print('Dodawanie: ' + str(i))
-		queue.insert(i)
-
-	z = number('Ile elementow chcesz usunac: ')
-
-	for i in range(z):
-		try:
-			print(queue.remove())
-		except IndexError:
-			print('Proba usuniecia nieistniejacego elementu')
-			input('Nacisnij eneter zeby kontynuowac')
-			input()
-			break 
-
-
-queue.insert(1)
-
-print('\n\n\n\nSprawdzenie czy kolejka jest pusta')
-print(queue.is_empty())
-print('Wywolanie metody clear()')
-queue.clear()
-print('Sprawdzenie czy pusta')
-print(queue.is_empty())
+if __name__ == '__main__':
+	unittest.main()

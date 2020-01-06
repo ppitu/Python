@@ -1,33 +1,32 @@
 from queue import *
 
-queue = Queue()
+import unittest
 
-print('Sprawdzenie czy kolejka jest pusta: ', queue.is_empty())
-print('Sprawdzanie czy pelna: ', queue.is_full())
-print('Dodanie 5 elementow')
-queue.put(10)
-queue.put(11)
-queue.put(12)
-queue.put(13)
-queue.put(14)
+class Test(unittest.TestCase):
+	queue = Queue()
 
-print('Proba dodania elementu poza wielkosc kolejki')
-try:
-	queue.put(15)
-	print('Dodano element')
-except IndexError:
-	print('Przepelnienie kolejki, nie dodano elementu')
+	def test_czy_pusta(self):
+		print("Sprawdzenie czy pusta")
+		self.assertTrue(self.queue.is_empty())
 
-print('Sprawdzenie czy pelna: ', queue.is_full())
-print('Sprawdzanie czy pusta: ', queue.is_empty())
-print('Usuwanie elementow')
+	def test_czy_pelna(self):
+		print("Sprawdzenie czy pelna")
+		self.assertFalse(self.queue.is_full())
 
-while not queue.is_empty():
-	print('Element: ', queue.get())
+	def test_dodanie_elementow(self):
+		print("Dodanie 5 elementow")
+		for i in range(5):
+			self.queue.put((i+1)*10)
 
-print('Proba pobrania nie istniejacego elementu')
-try:
-	queue.get()
-	print('Pobrano element')
-except IndexError:
-	print('Element nie istnieje')
+	def test_dodanie_poza_wielkosc_kolejki(self):
+		print("Dodanie poza welkosc kolejki")
+		with self.assertRaises(ValueError):
+			self.queue.put(1)
+
+	def test_usuwanie_elementow(self):
+		print("Usuwanie elementow")
+		while not self.queue.is_empty():
+			self.queue.get()
+
+if __name__ == '__main__':
+	unittest.main()

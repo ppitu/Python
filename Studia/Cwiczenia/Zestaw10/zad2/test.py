@@ -1,37 +1,27 @@
 from stack import *
+import unittest
 
-stack = Stack()
+class Test(unittest.TestCase):
+	stack = Stack()
 
-print('Sprawdzenie czy pusty:', stack.is_empty())
+	def test_dodanie_elementow(self):
+		print("Wypelnienie stosu")
+		for i in range(10):
+			self.stack.push(i)
 
-print('Dodanie 10 elementow')
-stack.push(0)
-stack.push(1)
-stack.push(2)
-stack.push(3)
-stack.push(4)
-stack.push(5)
-stack.push(6)
-stack.push(7)
-stack.push(8)
-stack.push(9)
+		print("Sprawdzenie czy pelny")
+		self.assertEqual(self.stack.is_full(), True)
 
-print('Sparwdzenie przepelnienia stosu:')
-try:
-	stack.push(10)
-	print('Dodano element')
-except IndexError:
-	print('Przepelnienie stosu, nie dodano elementu')
+	def test_przepelnienia_stosu(self):
+		print("Test przepelnienia stosu")
+		with self.assertRaises(ValueError):
+			self.stack.push(1)
 
-print('Sprawdzenie czy pelny: ', stack.is_full())
+	def test_usuwania_elementow(self):
+		print("Usuwanie elementow")
+		while not self.stack.is_empty():
+			self.stack.pop()
+		self.assertEqual(self.stack.is_empty(), True)
 
-print('Usuwanie elementow')
-while not stack.is_empty():
-	print('Element: ', stack.pop())
-
-print('Sprawdzenie usuniecia elementu z pustego stosu')
-try:
-	stack.pop()
-	print('Usunieto element')
-except IndexError:
-	print('Brak elementow do usuniecia')
+if __name__ == '__main__':
+	unittest.main()

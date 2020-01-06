@@ -14,14 +14,14 @@ class Stack:
 
 	def push(self, data):
 		if self.n >= self.size:
-			raise IndexError
+			raise ValueError
 
 		self.items[self.n] = data
 		self.n += 1
 
 	def pop(self):
 		if self.n == 0:
-			raise IndexError
+			raise ValueError
 
 		self.n -= 1
 		data = self.items[self.n]

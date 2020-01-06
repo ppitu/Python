@@ -14,15 +14,15 @@ class Queue:
 		return (self.head + self.n - 1) % self.n == self.tail
 
 	def put(self, data):
-		if self.tail + 1 == self.n:
-			raise IndexError
+		if self.is_full():
+			raise ValueError
 
 		self.items[self.tail] = data
 		self.tail = (self.tail + 1) % self.n
 
 	def get(self):
 		if self.tail == self.head:
-			raise IndexError
+			raise ValueError
 
 		data = self.items[self.head]
 		self.items[self.head] = None
