@@ -14,4 +14,4 @@ for x in range(100):
 	lista.append(x + 1)
 
 print('Szukanie mediany dla listy 100 elementow')
-print(mediana_sort(lista, 0, 99))
+print(mediana_sort(lista, 49, 99))

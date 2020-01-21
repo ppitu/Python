@@ -3,7 +3,7 @@ def binarne_rek(L, left, right, y):
 
 	k = int((left+right)/2)
 
-	if left == right:
+	if left > right:
 		return None
 
 	if y == L[k]:
