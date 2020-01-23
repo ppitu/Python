@@ -13,17 +13,23 @@ class Node:
 
 class AVLTree:
 	"""Klasa reprezentujaca drzewo AVL"""
+	def __init__(self):
+		self.root = None
 	
+
+	def insert(self, data):
+		self.root = self.insertNode(self.root, data)
+
 	#Dodanie elementu do drzewa
-	def insert(self, root, data):
+	def insertNode(self, root, data):
 		
 		#Dodajemy jak to zwyklego drzewa BST
 		if not root:
 			return Node(data)
 		elif data < root.data:
-			root.left = self.insert(root.left, data)
+			root.left = self.insertNode(root.left, data)
 		else:
-			root.right = self.insert(root.right, data)
+			root.right = self.insertNode(root.right, data)
 		
 		#Uaktualnienie wysokosci dodanego wezla
 		root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
@@ -48,17 +54,20 @@ class AVLTree:
 
 		return root
 
+	def delete(self, data):
+		self.root = self.deleteNode(self.root, data)
+
 	#Usuwanie elementu z drzew
-	def delete(self, root, data):
+	def deleteNode(self, root, data):
 		
 		if not root:
 			return root
 
 		elif data < root.data:
-			root.left = self.delete(root.left, data)
+			root.left = self.deleteNode(root.left, data)
 		
 		elif data > root.data:
-			root.right = self.delete(root.right, data)
+			root.right = self.deleteNode(root.right, data)
 		else:
 			if root.left is None:
 				temp = root.right
@@ -71,7 +80,7 @@ class AVLTree:
 
 			temp = self.getMinValueNode(root.right)
 			root.data = temp.data
-			root.right = self.delete(root.right, temp.data)
+			root.right = self.deleteNode(root.right, temp.data)
 
 		if root is None:
 			return root
@@ -141,30 +150,32 @@ class AVLTree:
 		
 		return self.getMinValueNode(root.left)
 
+	def preOrder(self):
+		self.preOrder1(self.root)
 
-	def preOrder(self, root):
+
+	def preOrder1(self, root):
 		if not root:
 			return
 
 		print("{0} ".format(root.data))
-		self.preOrder(root.left)
-		self.preOrder(root.right)
+		self.preOrder1(root.left)
+		self.preOrder1(root.right)
 
 
 
 
 myTree = AVLTree() 
-root = None
   
-root = myTree.insert(root, 10) 
-root = myTree.insert(root, 20) 
-root = myTree.insert(root, 30) 
-root = myTree.insert(root, 40) 
-root = myTree.insert(root, 50) 
-root = myTree.insert(root, 25) 
+myTree.insert(10) 
+myTree.insert(20) 
+myTree.insert(30) 
+myTree.insert(40) 
+myTree.insert(50) 
+myTree.insert(25) 
 
-myTree.preOrder(root) 
-print("\n\n\n")
-root = myTree.delete(root, 50)
-root = myTree.delete(root, 20)
-myTree.preOrder(root)
+myTree.preOrder() 
+print("\n")
+myTree.delete(50)
+myTree.delete(20)
+myTree.preOrder()
