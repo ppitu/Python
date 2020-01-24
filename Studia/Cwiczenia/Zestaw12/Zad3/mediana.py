@@ -1,11 +1,13 @@
 
 def mediana_sort(L, left, right):
-	L.sort()
+	Li = L[left:right]
 
-	if len(L) % 2 == 0:
-		return L[int((left+right)/2)]
+	Li.sort()
+
+	if len(Li) % 2 == 0:
+		return Li[int((len(Li)/2))]
 	else:
-		return L[int((left+right+1)/2)]
+		return Li[int((len(Li)+1)/2)]
 
 
 lista = []
