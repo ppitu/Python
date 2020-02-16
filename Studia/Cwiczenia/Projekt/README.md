@@ -37,11 +37,21 @@ postaci dogodnej dla następnej rotacji RR.
   
 **Rotacja LR**
   
-Rotacja LR jest złożeniem rotacji RR i LL. Jest lustrzanym odbiciem rotacji Rl.
+Rotacja LR jest złożeniem rotacji RR i LL. Jest lustrzanym odbiciem rotacji RL.
   
 ### Usuwanie
   
 Usuwanie elementu z drzewa AVL odbywa się tak samo jak w przypadku drzewa BST (szukamy elementu do usuniecia a następnie go usuwamy zachowując wszystkie własniści drzewa BST) to wykonanej operacji 
 usuwania sprawdzamy czu drzewo jest zrównoważone, jeśli nie wykonujemy rotacji jak w przypadku wstawiania.  
-
   
+### Opis projektu
+  
+Moje drzewa AVL sklada sie z dwóch klas Node i AVLTree, które odpwiadają za następujące funkcję:  
+- Node za wezły drzewa  
+- AVLTree za operacje na drzewie  
+  
+Dodatkowo drzewa zawiera dwie funnkcje wypisujące drzewa:  
+- PrintTree - funkcja ta wypisuje drzewo w postaci drzewa (wizualizuje wygląd drzewa)    
+- preOreder - funkcja wypisuje elementy drzewa w przejsciu preOrder przez drzewo  
+
+Impplementacja posiada również funkcję sizeTree, która zwraca ile elementów zawiera drzewo.

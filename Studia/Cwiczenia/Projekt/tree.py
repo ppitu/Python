@@ -169,7 +169,7 @@ class AVLTree:
 		self.preOrder1(root.left)
 		self.preOrder1(root.right)
 
-	def size(self):
+	def sizeTree(self):
 		return self.size
 
 	def printTree(self):
@@ -192,23 +192,4 @@ class AVLTree:
 		self.print2D(root.left, space)
 
 
-myTree = AVLTree() 
-  
-myTree.insert(10) 
-myTree.insert(20) 
-myTree.insert(30) 
-myTree.insert(40) 
-myTree.insert(50) 
-myTree.insert(25) 
-myTree.insert(18)
-myTree.insert(51)
-print("\n")
-#print(myTree.size())
 
-myTree.printTree();
-
-#myTree.preOrder() 
-print("\n")
-myTree.delete(50)
-myTree.delete(20)
-myTree.preOrder()
