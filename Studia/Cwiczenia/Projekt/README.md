@@ -50,7 +50,7 @@ Moje drzewa AVL sklada sie z dwóch klas Node i AVLTree, które odpwiadają za n
 - Node za wezły drzewa  
 - AVLTree za operacje na drzewie  
   
-Dodatkowo drzewa zawiera dwie funnkcje wypisujące drzewa:  
+Dodatkowo drzewo zawiera dwie funnkcje wypisujące drzewa:  
 - PrintTree - funkcja ta wypisuje drzewo w postaci drzewa (wizualizuje wygląd drzewa)    
 - preOreder - funkcja wypisuje elementy drzewa w przejsciu preOrder przez drzewo  
 
