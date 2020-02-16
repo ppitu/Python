@@ -1,3 +1,4 @@
+COUNT = [10]
 
 class Node:
 	"""Klasa reprezentuje wezel drzewa AVL"""
@@ -15,9 +16,11 @@ class AVLTree:
 	"""Klasa reprezentujaca drzewo AVL"""
 	def __init__(self):
 		self.root = None
+		self.size = 0
 	
 
 	def insert(self, data):
+		self.size = self.size + 1
 		self.root = self.insertNode(self.root, data)
 
 	#Dodanie elementu do drzewa
@@ -28,8 +31,10 @@ class AVLTree:
 			return Node(data)
 		elif data < root.data:
 			root.left = self.insertNode(root.left, data)
-		else:
+		elif data > root.data:
 			root.right = self.insertNode(root.right, data)
+		else:
+			self.size = self.size - 1
 		
 		#Uaktualnienie wysokosci dodanego wezla
 		root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
@@ -55,12 +60,14 @@ class AVLTree:
 		return root
 
 	def delete(self, data):
+		self.size = self.size - 1
 		self.root = self.deleteNode(self.root, data)
 
 	#Usuwanie elementu z drzew
 	def deleteNode(self, root, data):
 		
 		if not root:
+			self.size = self.size + 1
 			return root
 
 		elif data < root.data:
@@ -162,7 +169,27 @@ class AVLTree:
 		self.preOrder1(root.left)
 		self.preOrder1(root.right)
 
+	def size(self):
+		return self.size
 
+	def printTree(self):
+		self.print2D(self.root, 0)
+
+	def print2D(self, root, space):
+		if(root == None):
+			return
+
+		space += COUNT[0]
+
+		self.print2D(root.right, space)
+
+		print()
+
+		for i in range(COUNT[0], space):
+			print(end = " ")
+		print(root.data)
+
+		self.print2D(root.left, space)
 
 
 myTree = AVLTree() 
@@ -173,8 +200,14 @@ myTree.insert(30)
 myTree.insert(40) 
 myTree.insert(50) 
 myTree.insert(25) 
+myTree.insert(18)
+myTree.insert(51)
+print("\n")
+#print(myTree.size())
 
-myTree.preOrder() 
+myTree.printTree();
+
+#myTree.preOrder() 
 print("\n")
 myTree.delete(50)
 myTree.delete(20)
