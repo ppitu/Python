@@ -1,7 +1,7 @@
 # Drzewo AVL
 
-**Autro: Piotr Chmura**
-**Data oddania projektu: 18.02.2019**
+**Autro: Piotr Chmura**  
+**Data oddania projektu: 18.02.2019**  
   
 **Drzeno AVL** - jest to zrównoważone binarne drzewo poszukiwań (BST), w którym wysokość lewego i
 prawego poddrzewa każdego węzła różni się co najwyżej o jeden.
