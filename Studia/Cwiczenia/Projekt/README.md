@@ -1,4 +1,7 @@
 # Drzewo AVL
+
+**Autro: Piotr Chmura**
+**Data oddania projektu: 18.02.2019**
   
 **Drzeno AVL** - jest to zrównoważone binarne drzewo poszukiwań (BST), w którym wysokość lewego i
 prawego poddrzewa każdego węzła różni się co najwyżej o jeden.
@@ -8,11 +11,11 @@ prawego poddrzewa każdego węzła różni się co najwyżej o jeden.
 Algorytmy podstawowych operacji na drzewie AVL przypominają te z binarnych drzew poszukiwań, ale sa
  poprzedzane lub następują po niech jedna lub wiecej rotacji. Koszt każdej operacji to O(log n)
   
-### Wstawanie
+### Wstawianie
   
-Wstanianie do drzewa AVL wyglada tak samo, najpierw przeszukujemy drzewo w celu odszukania mejsca 
-wstawienia elementu, nastepnie wstawiamy ten element. Po wstawieniu element następuje sprawdzenie 
-czy drzewo jest zrownowazone tzn. czy wysokość pomiędzy prawym a lewym poddrzewem są równe: -1, 0, 1
+Wstanianie do drzewa AVL wygląda tak samo jak to BST, najpierw przeszukujemy drzewo w celu odszukania mejsca 
+wstawienia elementu, nastepnie wstawiamy ten element. Po wstawieniu elementu następuje sprawdzenie 
+czy drzewo jest zrównoważone tzn. czy wysokość pomiędzy prawym a lewym poddrzewem są równe: -1, 0, 1
  jeżeli mają wartości inne niż podane powyżej następuję tak zwana rotacja drzewa. Mamy następujące 
 rotacje:  
 - Rotacja pojedyncza **LL** (ang. Left-Left)  
@@ -22,7 +25,7 @@ rotacje:
   
 **Rotacja RR**
   
-W rotacji RR uczestniczą węzły A i B. Węzeł B zajmuje miejsce węzła A, węzeł A staje sie lewym synem
+W rotacji RR uczestniczą węzły A i B. Węzeł B zajmuje miejsce węzła A, węzeł A staje się lewym synem
  węzła B. Lewy syn węzła B (BL) staje sie prawym synem węzla A.
   
 **Rotacja LL**
@@ -41,8 +44,8 @@ Rotacja LR jest złożeniem rotacji RR i LL. Jest lustrzanym odbiciem rotacji RL
   
 ### Usuwanie
   
-Usuwanie elementu z drzewa AVL odbywa się tak samo jak w przypadku drzewa BST (szukamy elementu do usuniecia a następnie go usuwamy zachowując wszystkie własniści drzewa BST) to wykonanej operacji 
-usuwania sprawdzamy czu drzewo jest zrównoważone, jeśli nie wykonujemy rotacji jak w przypadku wstawiania.  
+Usuwanie elementu z drzewa AVL odbywa się tak samo jak w przypadku drzewa BST (szukamy elementu do usuniecia a następnie go usuwamy zachowując wszystkie własniści drzewa BST) po wykonanej operacji 
+usuwania sprawdzamy czy drzewo jest zrównoważone, jeśli nie wykonujemy rotacje jak w przypadku wstawiania.  
   
 ### Opis projektu
   
@@ -54,4 +57,9 @@ Dodatkowo drzewo zawiera dwie funnkcje wypisujące drzewa:
 - PrintTree - funkcja ta wypisuje drzewo w postaci drzewa (wizualizuje wygląd drzewa)    
 - preOreder - funkcja wypisuje elementy drzewa w przejsciu preOrder przez drzewo  
 
-Impplementacja posiada również funkcję sizeTree, która zwraca ile elementów zawiera drzewo.
+Implementacja posiada również funkcję sizeTree, która zwraca ile elementów, które zawiera drzewo.
+
+Źródła:  
+https://eduinf.waw.pl/inf/alg/001_search/0108.php  
+https://pl.wikipedia.org/wiki/Drzewo_AVL  
+

@@ -162,7 +162,7 @@ class AVLTree:
 
 
 	def preOrder1(self, root):
-		if not root:
+		if root is None:
 			return
 
 		print("{0} ".format(root.data))
@@ -190,6 +190,3 @@ class AVLTree:
 		print(root.data)
 
 		self.print2D(root.left, space)
-
-
-

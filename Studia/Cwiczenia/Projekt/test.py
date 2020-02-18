@@ -1,50 +1,46 @@
 from tree import *
 import os
 
-myTree = AVLTree()
+import unittest
+import random
 
-print("Uzupelnianie drzewa 20 elementami")
-for x in range(20):
-	print("Dodaje: " + str(x))
-	myTree.insert(x) 
+class Test(unittest.TestCase):
+	myTree = AVLTree()
 
-input("Nacisnij Enter żeby kontynuować...")
-os.system("clear")
+	def test1_dodania_elementow(self):
+		print("Dodanie elementow w kolejnosc rosnacej")
+		for x in range(20):
+			self.myTree.insert(x)
 
-print("Rozmiar drzewa: " + str(myTree.sizeTree()))
-print("Wyswietlone drzewo:")
-myTree.printTree()
+	def test2_zrownowazone(self):
+		print("Test sprawdza czy zrownowazone poprzez wypisanie drzewa na ekran")
+		self.myTree.printTree()	
 
-input("Nacisnij Enter żeby kontynuować...")
-os.system("clear")
-print("Usuwanie pierwszy 10 elementow z drzewa")
-for x in range(10):
-	myTree.delete(x)
+	def test3_dodanie_elementow_odwrotnie(self):
+		print("Dodanie elementow w kolejnosc malejacej")
+		for x in range(20):
+			self.myTree.delete(x)
 
-print("Wyswietlenie drzewa:")
-myTree.printTree()
-input("Nacisnij Eneter żeby kontynuować...")
-os.system("clear")
-
-print("Tworzenie nowego drzewa i dodanie 20 losowych elementow.")
-for x in range(20):
+		for x in range(20):
+			self.myTree.insert(20 - x)
+	
+	def test4_zrownowazone1(self):
+		print("Test sprawdza czy zronowazone poprzez wypisanie drzewa na ekran")
+		self.myTree.printTree()
 	
 
-"""myTree.insert(10) 
-myTree.insert(20) 
-myTree.insert(30) 
-myTree.insert(40) 
-myTree.insert(50) 
-myTree.insert(25) 
-myTree.insert(18)
-myTree.insert(51)
-print("\n")
-print(myTree.sizeTree())
+	def test5_dodanie_losowych_elementow(self):
+		print("Dodanie losowych elementow do drzewa")
+		for x in range(20):
+			self.myTree.delete(x)
 
-myTree.printTree();
+		for x in range(30):
+			self.myTree.insert(random.randrange(100))
 
-#myTree.preOrder() 
-print("\n")
-myTree.delete(50)
-myTree.delete(20)
-myTree.preOrder()"""
+	def test6_zrownowazone2(self):
+		print("Test sprawdza czy zrownowazone poprzez wypisanie drzewa na ekran")
+		self.myTree.printTree()
+		
+
+if __name__ == '__main__':
+	unittest.main()
