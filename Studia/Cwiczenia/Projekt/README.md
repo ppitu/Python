@@ -57,6 +57,8 @@ Dodatkowo drzewo zawiera dwie funnkcje wypisujące drzewa:
 - PrintTree - funkcja ta wypisuje drzewo w postaci drzewa (wizualizuje wygląd drzewa)    
 - preOreder - funkcja wypisuje elementy drzewa w przejsciu preOrder przez drzewo  
 
+Funkcja is_avl() sprawdza czy drzewa jest w postaci avl wykorzystujac roznice wysokosci prawego i lewego poddrzewa  
+
 Implementacja posiada również funkcję sizeTree, która zwraca ile elementów, które zawiera drzewo.
 
 Źródła:  

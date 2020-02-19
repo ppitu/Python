@@ -13,8 +13,8 @@ class Test(unittest.TestCase):
 			self.myTree.insert(x)
 
 	def test2_zrownowazone(self):
-		print("Test sprawdza czy zrownowazone poprzez wypisanie drzewa na ekran")
-		self.myTree.printTree()	
+		print("Test sprawdza czy zrownowazone")
+		self.assertTrue(self.myTree.is_avl())
 
 	def test3_dodanie_elementow_odwrotnie(self):
 		print("Dodanie elementow w kolejnosc malejacej")
@@ -25,8 +25,8 @@ class Test(unittest.TestCase):
 			self.myTree.insert(20 - x)
 	
 	def test4_zrownowazone1(self):
-		print("Test sprawdza czy zronowazone poprzez wypisanie drzewa na ekran")
-		self.myTree.printTree()
+		print("Test sprawdza czy zronowazone")
+		self.assertTrue(self.myTree.is_avl())
 	
 
 	def test5_dodanie_losowych_elementow(self):
@@ -38,8 +38,8 @@ class Test(unittest.TestCase):
 			self.myTree.insert(random.randrange(100))
 
 	def test6_zrownowazone2(self):
-		print("Test sprawdza czy zrownowazone poprzez wypisanie drzewa na ekran")
-		self.myTree.printTree()
+		print("Test sprawdza czy zrownowazone")
+		self.assertTrue(self.myTree.is_avl())
 		
 
 if __name__ == '__main__':

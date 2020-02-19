@@ -190,3 +190,12 @@ class AVLTree:
 		print(root.data)
 
 		self.print2D(root.left, space)
+
+	def is_avl(self):
+		balance = self.getBalance(self.root)
+
+		if balance == 1 or balance == 0 or balance == -1:
+			return True
+		else:
+			return False
+		
